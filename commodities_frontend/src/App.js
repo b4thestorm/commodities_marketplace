@@ -7,13 +7,14 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-do
 import './App.css';
 
 function App() {
+  const currentUser = localStorage.getItem('user')
   return (
     <Router>
         <Route path="/signup">
          <Signup />
         </Route>
         <Route path="/login">
-          <Login />
+          {currentUser ? <Redirect to="/" />: <Login />}
         </Route>
         <Route path="/">
           <CommoditiesForm />

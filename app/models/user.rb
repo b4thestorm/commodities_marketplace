@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :buyers, class_name: 'Bid', foreign_key: 'buyer_id'
   has_many :sellers, class_name: 'Bid', foreign_key: 'seller_id'
+  has_many :commodity
 
   validate :allowed_type?, on: :create
 
