@@ -7,14 +7,16 @@ class Login extends React.Component {
     axios({
       method: 'POST',
       url: 'http://localhost:3001/auth/sign_in',
-      data: {
-        email: this.email.value,
-        password: this.password.value
-      }
-    })
+      data: { email: this.email.value, password: this.password.value}})
     .then(response => {
-     console.log(response)
-    })
+      localStorage.setItem('user',
+       JSON.stringify({
+         'access-token': response.headers['access-token'],
+         'client': response.headers['client'],
+         'uid': response.data.data.uid
+     }))
+       console.log(response)
+   }).catch(err => err.message);
   }
 
   render () {
@@ -22,8 +24,8 @@ class Login extends React.Component {
       <div>
         <h2>Log in</h2>
         <form onSubmit={this.handleLogin} >
-          <input name="email" ref={(input) => this.email = input } />
-          <input name="password" type="password" ref={(input) => this.password = input } />
+          <input type="email" placeholder="Enter email" name="email" ref={(input) => this.email = input } />
+          <input type="password" placeholder="Password" name="password"  ref={(input) => this.password = input } />
           <input type="submit"/>
         </form>
       </div>

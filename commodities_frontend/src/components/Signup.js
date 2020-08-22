@@ -58,24 +58,24 @@ class Signup extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Email
-            <input name="email" value={this.state.value} onChange={this.handleChange} />
+            <input name="email" value={this.state.value} onChange={this.handleInputChange} />
           </label>
           <br></br>
           <label>
             First Name
-            <input name="first_name" value={this.state.value} onChange={this.handleChange} />
+            <input name="first_name" value={this.state.value} onChange={this.handleInputChange} />
           </label>
           <br></br>
           <label>
             Pick an Account Type:
-            <select name="user_type" value={this.state.value} onChange={this.handleChange}>
+            <select name="user_type" value={this.state.value} onChange={this.handleInputChange}>
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
             </select>
           </label>
           <br></br>
           <label>
-          <input name="password" value={this.state.value} onChange={this.handleChange}/>
+          <input name="password" value={this.state.value} onChange={this.handleInputChange}/>
           </label>
           <br></br>
           <input type="submit"/>
