@@ -13,13 +13,7 @@ class Login extends React.Component {
       }
     })
     .then(response => {
-      localStorage.setItem('user',
-        JSON.stringify({
-          'access-token': response.headers['access-token'],
-          'client': response.headers['client'],
-          'uid': response.data.uid
-      }))
-      window.location = '/'
+     console.log(response)
     })
   }
 
@@ -38,3 +32,4 @@ class Login extends React.Component {
 }
 
 export default Login
+//signup?email=tester%40gmail.com&first_name=testing1234&user_type=seller&password=necros12
