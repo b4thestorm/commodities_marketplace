@@ -44,7 +44,8 @@ class Signup extends React.Component {
         JSON.stringify({
           'access-token': response.headers['access-token'],
           'client': response.headers['client'],
-          'uid': response.data.uid
+          'uid': response.data.uid,
+          'user_type': this.state.user_type.value 
       }))
       //depending on user type change direction
       window.location = '/'

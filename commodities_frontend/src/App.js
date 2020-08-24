@@ -8,22 +8,25 @@ import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-do
 import './App.css';
 
 function App() {
-  const currentUser = localStorage.getItem('user')
+  const currentUser = JSON.parse(localStorage.getItem('user'))
   return (
+
     <Router>
-        <Route path="/signup">
-         <Signup />
-        </Route>
+    <Switch>
+        <Route path="/signup" component={Signup}></Route>
         <Route path="/login">
-          {currentUser ? <Redirect to="/" />: <Login />}
+        {currentUser ? currentUser["user_type"] === 'seller' ? <Redirect to="/seller" /> : <Redirect to='buyer' /> : <Login />}
         </Route>
-        <Route>
+        <Route path="/seller">
           <CommoditiesTable />
-        </Route>
-        <Route path="/">
           <CommoditiesForm />
         </Route>
+        <Route path="/buyer">
+
+        </Route>
+    </Switch>
     </Router>
+
   );
 }
 

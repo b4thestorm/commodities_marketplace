@@ -13,9 +13,11 @@ class Login extends React.Component {
        JSON.stringify({
          'access-token': response.headers['access-token'],
          'client': response.headers['client'],
-         'uid': response.data.data.uid
+         'uid': response.data.data.uid,
+         'user_type': response.data.data.user_type
      }))
-       console.log(response)
+      window.location = '/' + response.data.data.user_type//change based on user type
+      console.log(response)
    }).catch(err => err.message);
   }
 
