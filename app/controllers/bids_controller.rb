@@ -22,7 +22,7 @@ class BidsController < ApplicationController
     if bid.save
       render json: @bid
     else
-      render json: @commodity.errors, status: :unprocessable_entity
+      render json: @bid.errors, status: :unprocessable_entity
     end
   end
 end
