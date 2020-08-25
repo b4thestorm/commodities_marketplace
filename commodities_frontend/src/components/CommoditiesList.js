@@ -14,7 +14,7 @@ function CommoditiesList () {
      url:  'http://localhost:3001/users/18/commodities',
      headers: {'access-token': user['access-token'], 'client': user['client'], 'uid': user['uid']}
    }).then(response => {setItems(response.data);})
-  })
+ }, [])
 
  return(
    <div>
@@ -25,7 +25,7 @@ function CommoditiesList () {
           <Card.Title>{commodity.product_name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">{commodity.quantity}</Card.Subtitle>
           <Card.Subtitle className="mb-2 text-muted">${commodity.price}</Card.Subtitle>
-          <Card.Subtitle><Bid data={commodity.id}/></Card.Subtitle>
+          <Card.Subtitle><Bid data={commodity} /></Card.Subtitle>
         </Card.Body>
     )})}
   </Card></div>

@@ -17,13 +17,21 @@ class BidsController < ApplicationController
     commodity_id = params[:commodity_id]
     amount = params[:amount]
     qty = params[:qty]
-    product = Commodity.where(id: commodity_id)
+    product = Commodity.where(id: commodity_id)[0]
     seller_id  = product.user.id
+    #buyer and seller can't be the same. must fix here. 
     @bid = Bid.new(amount: amount, quantity: qty, buyer_id: buyer_id, seller_id: seller_id, commodities_id: commodity_id)
-    if bid.save
+
+    if @bid.save
       render json: @bid
     else
       render json: @bid.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def bid_params
+    params.permit!(:commodity_id, :amount, :qty, :buyer_id, :user_id)
   end
 end
