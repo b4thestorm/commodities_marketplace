@@ -36,3 +36,5 @@ class Login extends React.Component {
 }
 
 export default Login
+
+//currently only sending user_id and only processing if user is seller

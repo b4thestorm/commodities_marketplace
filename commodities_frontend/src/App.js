@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import CommoditiesForm from './components/CommoditiesForm'
 import CommoditiesTable from './components/CommoditiesTable'
+import CommoditiesList from './components/CommoditiesList'
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
 import './App.css';
 
@@ -22,7 +23,7 @@ function App() {
           <CommoditiesForm />
         </Route>
         <Route path="/buyer">
-
+         <CommoditiesList />
         </Route>
     </Switch>
     </Router>

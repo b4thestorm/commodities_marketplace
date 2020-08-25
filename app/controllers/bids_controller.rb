@@ -11,6 +11,7 @@ class BidsController < ApplicationController
     render json: @bids
   end
 
+  #POST   /users/:user_id/bids(.:format)
   def create
     buyer_id = current_user.id
     commodity_id = params[:commodity_id]

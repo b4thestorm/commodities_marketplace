@@ -11,9 +11,12 @@ class CommoditiesController < ApplicationController
       render json: @commodity.errors, status: :unprocessable_entity
     end
   end
-
+  #GET /users/:user_id/commodities
   def index
-    @commodity = current_user.commodity
+    @commodity = current_user.commodity # seller Account default
+    if current_user.user_type == 'buyer'
+      @commodity = Commodity.last(10)
+    end
     render json: @commodity
   end
 
