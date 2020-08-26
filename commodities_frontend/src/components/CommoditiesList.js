@@ -11,7 +11,7 @@ function CommoditiesList () {
    let user = JSON.parse(localStorage.getItem('user'))
    axios({
      method: 'GET',
-     url:  'http://localhost:3001/users/18/commodities',
+     url:  'http://localhost:3001/users/' + user['user_id'] + '/commodities',
      headers: {'access-token': user['access-token'], 'client': user['client'], 'uid': user['uid']}
    }).then(response => {setItems(response.data);})
  }, [])

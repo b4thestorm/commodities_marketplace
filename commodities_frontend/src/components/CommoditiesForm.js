@@ -8,7 +8,7 @@ class CommoditiesForm extends React.Component {
     let user = JSON.parse(localStorage.getItem('user'))
     axios({
       method: 'POST',
-      url: 'http://localhost:3001/users/18/commodities',
+      url: 'http://localhost:3001/users/' + user['user_id'] + '/commodities',
       data: { product_name: this.product_name.value, quantity: this.quantity.value, price: this.price.value},
       headers: {
         'access-token': user["access-token"],
