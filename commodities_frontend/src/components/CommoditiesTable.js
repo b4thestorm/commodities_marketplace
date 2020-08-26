@@ -14,7 +14,7 @@ function CommoditiesTable() {
       headers: {'access-token': user['access-token'], 'client': user['client'], 'uid': user['uid']}
     })
     .then(response => { setItems(response.data);})
-  }, [])
+  }, [1])
 
   return (
 

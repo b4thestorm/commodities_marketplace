@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_043223) do
+ActiveRecord::Schema.define(version: 2020_08_26_023009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_043223) do
     t.bigint "commodities_id"
     t.integer "amount"
     t.integer "quantity"
+    t.boolean "confirm"
     t.index ["buyer_id"], name: "index_bids_on_buyer_id"
     t.index ["commodities_id"], name: "index_bids_on_commodities_id"
     t.index ["seller_id"], name: "index_bids_on_seller_id"
