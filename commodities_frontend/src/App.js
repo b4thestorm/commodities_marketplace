@@ -11,20 +11,21 @@ import './App.css';
 
 function App() {
   const currentUser = JSON.parse(localStorage.getItem('user'))
+
   return (
 
     <Router>
     <Switch>
         <Route path="/signup" component={Signup}/>
         <Route path="/login">
-        {currentUser ? currentUser["user_type"] === 'seller' ? <Redirect to="/seller" /> : <Redirect to='buyer' /> : <Login />}
+         {currentUser ? (currentUser["user_type"] === 'seller' ? <Redirect to="/seller" /> : <Redirect to='buyer' />) : <Login/>}
         </Route>
         <Route exact={true} path="/buyer">
-        {currentUser["user_type"] === 'seller' ? <Redirect to="/seller" /> : console.log('ok')}
+         {currentUser && currentUser["user_type"] === 'seller' ? <Redirect to="/seller" /> : console.log('ok')}
          <CommoditiesList />
         </Route>
         <Route exact={true} path="/seller">
-        {currentUser["user_type"] === 'buyer' ? <Redirect to="/buyer" /> : console.log('ok')}
+         {currentUser && currentUser["user_type"] === 'buyer' ? <Redirect to="/buyer" /> : console.log('ok')}
           <CommoditiesForm />
           <CommoditiesTable />
           <Ask />
