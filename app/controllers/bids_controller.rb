@@ -4,7 +4,8 @@ class BidsController < ApplicationController
   def index
     if current_user.user_type == 'seller'
       @connection = ActiveRecord::Base.connection
-      @bids = @connection.exec_query('select * from bids where seller_id =' + "#{current_user.id}")
+      bids = @connection.exec_query('select * from bids where seller_id =' + "#{current_user.id}")
+      @bids = helpers.seller_bids_information(bids)
     end
 
     render json: @bids
@@ -30,7 +31,6 @@ class BidsController < ApplicationController
   #PUT /users/:user_id/bids
   def update
     #use composite key to make sure you are creating the correct update here.
-    # binding.pry
     # seller_id = current_user.id
     # buyer_id = params[:buyer_id]
     # find bid
