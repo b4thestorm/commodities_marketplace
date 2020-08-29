@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom"
 import './index.css';
+import Header from './components/Header'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <App />,
+  <div>
+    <Header />
+    <App />
+  </div>,
   document.getElementById('root')
 );
 

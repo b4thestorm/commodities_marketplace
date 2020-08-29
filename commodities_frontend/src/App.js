@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
 import Login from './components/Login'
 import Signup from './components/Signup'
 import CommoditiesForm from './components/CommoditiesForm'
@@ -15,6 +15,7 @@ function App() {
   return (
 
     <Router>
+
     <Switch>
         <Route path="/signup" component={Signup}/>
         <Route path="/login">
