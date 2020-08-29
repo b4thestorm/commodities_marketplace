@@ -28,14 +28,19 @@ class BidsController < ApplicationController
     end
   end
 
-  #PUT /users/:user_id/bids
+  #PUT /users/:user_id/bids/:id
   def update
-    #use composite key to make sure you are creating the correct update here.
-    # seller_id = current_user.id
-    # buyer_id = params[:buyer_id]
-    # find bid
-    # set bid to true or false
-    # save
+    bid = Bid.where(id: params[:id].to_i)[0]
+
+    if params[:confirmed] == 'accept'
+      bid.confirm = true
+      bid.save
+    else
+      bid.confirm = false
+      bid.save
+    end
+
+    render json: { message: 'bid updated'}, status: 200
   end
 
   private

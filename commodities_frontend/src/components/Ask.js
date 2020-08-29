@@ -3,13 +3,13 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import Table from 'react-bootstrap/Table'
 import ListGroup from 'react-bootstrap/ListGroup'
+import ConfirmationButton from './ConfirmationButton'
 
 function Ask () {
   const [items, setItems] = useState([])
 
     useEffect (()=> {
         let user = JSON.parse(localStorage.getItem('user'))
-        console.log(user)
         axios({
           method: 'GET',
           url: 'http://localhost:3001/users/' + user['user_id'] + '/bids',
@@ -27,6 +27,7 @@ function Ask () {
           <th>Qty</th>
           <th>Price(cents)</th>
           <th>Buyer</th>
+          <th>Approve</th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,7 @@ function Ask () {
             <td>{item.quantity}</td>
             <td>{item.amount}</td>
             <td>{item.first_name}</td>
+            <td><ConfirmationButton data={item}/></td>
             </tr>)})}
          </tbody>
         </Table>
